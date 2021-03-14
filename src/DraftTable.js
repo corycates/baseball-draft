@@ -25,7 +25,7 @@ export default class DraftTable extends React.Component {
           {this.state.draft.map((draft) => (
             <Table.Row>
                 <Table.Cell>{ draft.mid }</Table.Cell>
-                <Table.Cell>{ draft.id}</Table.Cell>
+                <Table.Cell>{ draft.name} ({ draft.team }) { draft.position }</Table.Cell>
                 <Table.Cell>{ draft.pick} @ {draft.picktime}</Table.Cell>                
             </Table.Row>
           ))}
