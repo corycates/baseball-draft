@@ -4,16 +4,12 @@ import React, {Fragment} from 'react';
 import { Container } from 'semantic-ui-react';
  
 //import Login from './Login';
-import TableTeam from './TableTeam';
-import TeamAPITest from './TeamAPITest';
+import RosterTable from './RosterTable';
  
 const App = () => (
   <Fragment>
   <Container>
-    <TeamAPITest />
-  </Container>
-  <Container>
-    <TableTeam />
+    <RosterTable />
   </Container>
   </Fragment>
 );
