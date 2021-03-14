@@ -9,12 +9,17 @@ export default class DraftTable extends React.Component {
     }
     
     getTeamName(mid) {
-      if (this.state.teams[mid-1]) {
-        var label = this.state.teams[mid-1].team;
-        if ( this.state.teams[mid-1].autodraft == 1) label = label + "*";
-        return label;
+      for (var i = 0; i< 12; i++) {
+        if (this.state.teams[i]) {
+          if (this.state.teams[i].mid == mid) {
+          var label = this.state.teams[i].team;
+          if ( this.state.teams[i].autodraft == 1) label = label + "*";
+          return label;
 
-      } else return "";
+          } 
+        }
+      }
+      return "";
     }
     //updateTeamNames() {
       //console.log(this.state.teams);
