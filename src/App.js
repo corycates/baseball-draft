@@ -5,12 +5,20 @@ import { Container } from 'semantic-ui-react';
  
 //import Login from './Login';
 import RosterTable from './RosterTable';
+import QueTable from './QueTable';
+import DraftTable from './DraftTable';
  
 const App = () => (
   <Fragment>
   <Container>
     <RosterTable />
   </Container>
+  <Container>
+    <QueTable />
+  </Container> 
+  <Container>
+    <DraftTable />
+  </Container>  
   </Fragment>
 );
 /* function App() {
