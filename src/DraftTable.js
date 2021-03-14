@@ -4,10 +4,34 @@ import { Icon, Label, Menu, Table } from 'semantic-ui-react'
 
 export default class DraftTable extends React.Component {
     state = {
-      draft: []
+      draft: [],
+      teams: [],
     }
     
+    getTeamName(mid) {
+      if (this.state.teams[mid-1]) {
+        var label = this.state.teams[mid-1].team;
+        if ( this.state.teams[mid-1].autodraft == 1) label = label + "*";
+        return label;
+
+      } else return "";
+    }
+    //updateTeamNames() {
+      //console.log(this.state.teams);
+
+      //this.state.teams.foreach(function(team){
+       // var label = team.team;
+        //if (team.autodraft == 1) label = label + "*";
+        //this.state.TeamNames[team.mid] = label;
+      //});
+    //}
+
     render() {
+      //Fillout draft Team info
+      for (var i=0; i<this.state.draft.length-1;i++){
+        this.state.draft[i]["teamname"] = this.getTeamName(this.state.draft[i].mid);
+      }
+
       return (
           <React.Fragment>
           <h1>Draft</h1>
@@ -17,6 +41,7 @@ export default class DraftTable extends React.Component {
                 <Table.HeaderCell>Team</Table.HeaderCell>
                 <Table.HeaderCell>Player</Table.HeaderCell>
                 <Table.HeaderCell>Pick</Table.HeaderCell>
+                <Table.HeaderCell>Round</Table.HeaderCell>
             </Table.Row>
             </Table.Header>
   
@@ -24,9 +49,10 @@ export default class DraftTable extends React.Component {
 
           {this.state.draft.map((draft) => (
             <Table.Row>
-                <Table.Cell>{ draft.mid }</Table.Cell>
+                <Table.Cell>{ draft.teamname }</Table.Cell>
                 <Table.Cell>{ draft.name} ({ draft.team }) { draft.position }</Table.Cell>
-                <Table.Cell>{ draft.pick} @ {draft.picktime}</Table.Cell>                
+                <Table.Cell>{ draft.pick} @ { draft.picktime}</Table.Cell>      
+                <Table.Cell>{ Math.floor(draft.pick / 12) + 1 }</Table.Cell>          
             </Table.Row>
           ))}
 
@@ -44,6 +70,14 @@ export default class DraftTable extends React.Component {
         this.setState({ draft: data })
         console.log(this.state.draft)
        })
+
+       const url2 = 'https://corycates.com/baseball/api/get_draft_data.php?type=teamnames';
+       axios.get(url2).then(response => response.data)
+       .then((data) => {
+         this.setState({ teams: data });
+         console.log(this.state.teams);
+         
+        })    
     }
   
       
