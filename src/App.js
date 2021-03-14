@@ -7,9 +7,13 @@ import { Container } from 'semantic-ui-react';
 import RosterTable from './RosterTable';
 import QueTable from './QueTable';
 import DraftTable from './DraftTable';
+import PlayerTable from './PlayerTable';
  
 const App = () => (
   <Fragment>
+  <Container>
+    <PlayerTable />
+  </Container>
   <Container>
     <RosterTable />
   </Container>
