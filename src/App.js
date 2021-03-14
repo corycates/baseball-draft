@@ -1,7 +1,23 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
-
-function App() {
+import React, {Fragment} from 'react';
+import { Container } from 'semantic-ui-react';
+ 
+//import Login from './Login';
+import TableTeam from './TableTeam';
+import TeamAPITest from './TeamAPITest';
+ 
+const App = () => (
+  <Fragment>
+  <Container>
+    <TeamAPITest />
+  </Container>
+  <Container>
+    <TableTeam />
+  </Container>
+  </Fragment>
+);
+/* function App() {
   return (
     <div className="App">
       <header className="App-header">
@@ -20,6 +36,6 @@ function App() {
       </header>
     </div>
   );
-}
+} */
 
 export default App;
