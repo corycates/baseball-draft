@@ -23,7 +23,7 @@ function exampleReducer(state, action) {
 
       return {
         column: action.column,
-        players: _.sortBy(state.players, [action.column]),
+        players: _.orderBy(state.players, function (o) { return new Number(o[action.column]);}),
         direction: 'ascending',
       }
     default:
